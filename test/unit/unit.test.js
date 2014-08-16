@@ -65,6 +65,18 @@ describe("radar.js", function () {
     it("should return an object", function () {
       (new Radar().wrap({})).should.be.an.Object;
     });
+
+    it("should register a 'before' event", function () {
+      var radar = new Radar({ methods: ["hello"] })
+        , model = radar.wrap({ hello: function () {} }, { prefix: "user" });
+      radar.events.should.containEql("before:user:hello");
+    });
+
+    it("should register an 'after' event", function () {
+      var radar = new Radar({ methods: ["hello"] })
+        , model = radar.wrap({ hello: function () {} }, { prefix: "user" });
+      radar.events.should.containEql("after:user:hello");
+    });
   });
 
 });

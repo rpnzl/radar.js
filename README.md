@@ -1,57 +1,50 @@
-# Waterline Radar
+# Radar.js
 
 [![Build Status](https://travis-ci.org/rpnzl/radar.js.svg?branch=master)](https://travis-ci.org/rpnzl/radar.js)
 [![NPM version](https://badge.fury.io/js/radar.js.svg)](http://badge.fury.io/js/radar.js)
 
-A simple wrapper for Waterline models that emits events on lifecycle callbacks.
+A simple wrapper for objects that emits events *around* specified methods. It effectively
+sandwiches object methods between two event emitters.
 
 ## Installation
 
-    npm install waterline-radar
+    npm install radar.js
 
 ## Usage
 
-    /**
-     * app.js (one pager)
-     */
+    var Radar = require("radar.js")
+      , radar = new Radar();
+      , user;
 
-    var radar  = require("waterline-radar");
-    var config = radar.wrap({ ... }, { prefix: "user" });
-    var User   = Waterline.Collection.extend(config);
+    user = radar.wrap({
+      syncMethod: function (name) {
+        return "SYNC RESULT: " + name
+      },
+      asyncMethod: function (name, done) {
+        done(null, "ASYNC RESULT: " + name);
+      }
+    }, { prefix: "user" });
 
-    radar.on("user:afterCreate", function (model) {
-      console.log("User created:", model);
+    // sync
+    radar.before("user:syncMethod", function (name) {
+      console.log(name);
     });
 
-    /**
-     * sails.js
-     */
+    radar.after("user:syncMethod", function (result) {
+      console.log(result);
+    });
 
-    // config/_.js (a config file that gets processed first)
-    global["radar"] = require("waterline-radar");
+    // async
+    radar.before("user:asyncMethod", function (name) {
+      console.log(name);
+    });
 
-    // api/models/User.js
-    module.exports = radar.wrap({ ... }, { prefix: "user" });
+    radar.after("user:asyncMethod", function (result) {
+      console.log(result);
+    });
 
-    // api/hooks/Emails.js
-    module.exports = function Emails(sails) {
-      return {
-        initialize: function (done) {
-          radar.on("user:afterCreate", function (model) {
-            // ... send email to `model.email`
-          });
-        }
-      }
-    };
-
-## Details
-
-Radar works by wrapping the model's lifecycle callback methods in an `async.waterfall`
-and injecting the event emitter at the top of the list, like this...
-
-    async.waterfall([
-      radarEmitter,
-      lifecycleCallback // if it exists
-    ], done);
-
-Radar wraps the lifecycle callbacks listed in the [Waterline docs](https://github.com/balderdashy/waterline#lifecycle-callbacks).
+    // triggers
+    user.syncMethod("joe");
+    user.asyncMethod("joe", function (err, result) {
+      console.log(result)
+    });

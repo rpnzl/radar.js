@@ -1,5 +1,8 @@
 # Waterline Radar
 
+[![Build Status](https://travis-ci.org/rpnzl/radar.js.svg?branch=master)](https://travis-ci.org/rpnzl/radar.js)
+[![NPM version](https://badge.fury.io/js/radar.js.svg)](http://badge.fury.io/js/radar.js)
+
 A simple wrapper for Waterline models that emits events on lifecycle callbacks.
 
 ## Installation

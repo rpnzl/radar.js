@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "0.10"
+notifications:
+  email:
+    - michael.giuliana@gmail.com
+    on_success: never
+    on_failure: always
+branches:
+  only:
+    - master
+

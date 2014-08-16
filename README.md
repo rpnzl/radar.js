@@ -14,7 +14,7 @@ sandwiches object methods between two event emitters.
 
 ```javascript
 var Radar = require("radar.js")
-  , radar = new Radar()
+  , radar = new Radar({ methods: ["syncMethod", "asyncMethod"] })
   , user;
 
 // define object
@@ -42,7 +42,7 @@ radar.after("user:asyncMethod", function (result) {
 });
 
 // triggers
-user.syncMethod("joe");
+console.log(user.syncMethod("joe"));
 user.asyncMethod("joe", function (err, result) {
   console.log(result)
 });

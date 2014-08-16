@@ -12,39 +12,38 @@ sandwiches object methods between two event emitters.
 
 ## Usage
 
-    var Radar = require("radar.js")
-      , radar = new Radar();
-      , user;
+```javascript
+var Radar = require("radar.js")
+  , radar = new Radar()
+  , user;
 
-    user = radar.wrap({
-      syncMethod: function (name) {
-        return "SYNC RESULT: " + name
-      },
-      asyncMethod: function (name, done) {
-        done(null, "ASYNC RESULT: " + name);
-      }
-    }, { prefix: "user" });
+// define object
+user = radar.wrap({
+  syncMethod:  function (name) { return "SYNC RESULT: " + name },
+  asyncMethod: function (name, done) { done(null, "ASYNC RESULT: " + name); }
+}, { prefix: "user" });
 
-    // sync
-    radar.before("user:syncMethod", function (name) {
-      console.log(name);
-    });
+// sync
+radar.before("user:syncMethod", function (name) {
+  console.log(name);
+});
 
-    radar.after("user:syncMethod", function (result) {
-      console.log(result);
-    });
+radar.after("user:syncMethod", function (result) {
+  console.log(result);
+});
 
-    // async
-    radar.before("user:asyncMethod", function (name) {
-      console.log(name);
-    });
+// async
+radar.before("user:asyncMethod", function (name) {
+  console.log(name);
+});
 
-    radar.after("user:asyncMethod", function (result) {
-      console.log(result);
-    });
+radar.after("user:asyncMethod", function (result) {
+  console.log(result);
+});
 
-    // triggers
-    user.syncMethod("joe");
-    user.asyncMethod("joe", function (err, result) {
-      console.log(result)
-    });
+// triggers
+user.syncMethod("joe");
+user.asyncMethod("joe", function (err, result) {
+  console.log(result)
+});
+```

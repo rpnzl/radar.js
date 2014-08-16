@@ -1,0 +1,14 @@
+{
+  "predef": [
+    "before",
+    "after",
+    "it",
+    "describe",
+    "beforeEach",
+    "afterEach"
+  ],
+  "camelcase": true,
+  "indent": 2,
+  "quotmark": true,
+  "laxcomma": true
+}

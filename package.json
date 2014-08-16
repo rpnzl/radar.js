@@ -1,0 +1,38 @@
+{
+  "name": "radar.js",
+  "author": "Michael Giuliana <michael.giuliana@gmail.com>",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "main": "./lib",
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "mocha-jshint": "0.0.9",
+    "root-require": "^0.3.1",
+    "should": "^4.0.4"
+  },
+  "scripts": {
+    "test": "mocha -b",
+    "publish": "npm prune"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://links.sailsjs.org/license/mit"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rpnzl/radar.js.git"
+  },
+  "bugs": {
+    "url": "http://github.com/rpnzl/radar.js/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}

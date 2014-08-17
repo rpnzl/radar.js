@@ -62,7 +62,7 @@ bear.stay();
 ## Sync vs. Async
 
 This library works with both synchronous and asynchronous methods, but it does
-require an adherence to a certain asynchronous convention, which is **callback
+require an adherence to a certain asynchronous convention -- **callback
 parameters MUST be the last parameter supplied to a method**. For example...
 
 ```javascript

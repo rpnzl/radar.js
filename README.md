@@ -59,6 +59,27 @@ bear.stay();
 ```
 
 
+## Sync vs. Async
+
+This library works with both synchronous and asynchronous methods, but it does
+require an adherence to a certain asynchronous convention, which is **callback
+parameters MUST be the last parameter supplied to a method**. For example...
+
+```javascript
+var okay = radar.wrap({
+  asyncMethod: function (name, done) {
+    done(null, name.toUpperCase());
+  }
+}, { prefix: "okay" });
+
+var notOkay = radar.wrap({
+  asyncMethod: function (done, name) {
+    done(null, name.toUpperCase());
+  }
+}, { prefix: "notOkay" });
+```
+
+
 ## API
 
 ### Radar(options) [constructor]

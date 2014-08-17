@@ -103,7 +103,7 @@ options|n|`obj`
 
 name|req|type|default|description
 ----|---|----|-------|-----------
-separator|n|`str`|`":"`|separates the location (before, after), prefix, and method name
+separator|n|`str`|`":"`|separates the prefix and method name (prefix:method)
 methods|n|`arr`|`[]`|list of methods to wrap, if they exist
 
 ### Radar.wrap(object, options)

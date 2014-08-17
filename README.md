@@ -74,16 +74,16 @@ var radar = new Radar({ methods: ["leave"] });
 
 #### Arguments
 
-name|required|type
-----|--------|----
-options|no|`obj`
+name|req|type
+----|---|----
+options|n|`obj`
 
 #### Options
 
-name|type|default|description
-----|----|-------|-----------
-separator|`str`|`":"`|separates the location (before, after), prefix, and method name
-methods|`arr`|`[]`|list of methods to wrap, if they exist
+name|req|type|default|description
+----|---|----|-------|-----------
+separator|n|`str`|`":"`|separates the location (before, after), prefix, and method name
+methods|n|`arr`|`[]`|list of methods to wrap, if they exist
 
 ### Radar.wrap(object, options)
 
@@ -113,18 +113,18 @@ var fox = radar.wrap({
 
 #### Arguments
 
-name|required|type
-----|--------|----
-object|yes|`obj`
-options|yes|`obj`
+name|req|type
+----|---|----
+object|y|`obj`
+options|y|`obj`
 
 #### Options
 
-name|type|default|description
-----|----|-------|-----------
-prefix|`str`|`""`|prefixes the event names attached to this object
-separator|`str`|`":"`|overrides the default separator for the `object` argument's events only
-methods|`arr`|`[]`|list of additional methods to wrap for the `object` argument only
+name|req|type|default|description
+----|---|----|-------|-----------
+prefix|y|`str`|`""`|prefixes the event names attached to this object
+separator|n|`str`|`":"`|overrides the default separator for the `object` argument's events only
+methods|n|`arr`|`[]`|list of additional methods to wrap for the `object` argument only
 
 ### Radar.before(eventName, handler)
 
@@ -141,10 +141,10 @@ radar.before("bear:leave", function () {
 
 #### Arguments
 
-name|required|type
-----|--------|----
-eventName|yes|`str`
-handler|yes|`func`
+name|req|type
+----|---|----
+eventName|y|`str`
+handler|y|`func`
 
 ### Radar.after(eventName, handler)
 
@@ -161,7 +161,11 @@ radar.after("bear:leave", function () {
 
 #### Arguments
 
-name|required|type
-----|--------|----
-eventName|yes|`str`
-handler|yes|`func`
+name|req|type
+----|---|----
+eventName|y|`str`
+handler|y|`func`
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)

@@ -47,3 +47,28 @@ user.asyncMethod("joe", function (err, result) {
   console.log(result)
 });
 ```
+
+
+## API
+
+### Radar(options) [constructor]
+
+Create a new Radar object with some optional configuration.
+
+#### Usage
+
+```javascript
+var radar = new Radar();
+var radar = new Radar({ separator: "/" });
+```
+
+#### Options
+
+|name|type|default|description|
+|prefix|`str`|`""`|prefixes an event name, unless overridden using `Radar.wrap()`|
+|separator|`str`|`":"`|separates the location (before, after), prefix, and method name|
+|methods|`arr`|`[]`|a default list of methods to wrap|
+
+### Radar.wrap(object, options)
+
+Wraps designated methods within an object with before and after event emitters.

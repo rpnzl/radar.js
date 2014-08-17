@@ -24,12 +24,6 @@ describe("radar.js", function () {
       }).should.throw();
     });
 
-    it("should accept a default prefix", function () {
-      var prefix = "somecoolprefix"
-        , radar  = new Radar({ prefix: prefix });
-      radar.defaults.prefix.should.equal(prefix);
-    });
-
     it("should accept a default separator", function () {
       var separator = "/"
         , radar     = new Radar({ separator: separator });
@@ -46,24 +40,24 @@ describe("radar.js", function () {
   describe("#wrap()", function () {
     it("should throw an error when first arg is a string", function () {
       (function(){
-        var model = new Radar().wrap("string");
+        var model = new Radar().wrap("string", { prefix: "string" });
       }).should.throw();
     });
 
     it("should throw an error when arg is an array", function () {
       (function(){
-        var model = new Radar().wrap([]);
+        var model = new Radar().wrap([], { prefix: "array" });
       }).should.throw();
     });
 
     it("should throw an error when arg is a function", function () {
       (function(){
-        var model = new Radar().wrap(function(){});
+        var model = new Radar().wrap(function(){}, { prefix: "function" });
       }).should.throw();
     });
 
     it("should return an object", function () {
-      (new Radar().wrap({})).should.be.an.Object;
+      (new Radar().wrap({}, { prefix: "object" })).should.be.an.Object;
     });
 
     it("should register a 'before' event", function () {

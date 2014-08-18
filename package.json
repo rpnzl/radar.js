@@ -1,7 +1,7 @@
 {
   "name": "radar.js",
   "author": "Michael Giuliana <michael.giuliana@gmail.com>",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "",
   "keywords": [],
   "main": "./lib",
@@ -17,6 +17,7 @@
   },
   "scripts": {
     "test": "mocha -b",
+    "prepublish": "npm test",
     "publish": "npm prune"
   },
   "licenses": [

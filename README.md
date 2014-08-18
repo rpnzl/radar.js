@@ -1,10 +1,10 @@
 # Radar.js
 
-[![Build Status](https://travis-ci.org/rpnzl/radar.js.svg?branch=master)](https://travis-ci.org/rpnzl/radar.js)
-[![NPM version](https://badge.fury.io/js/radar.js.svg)](http://badge.fury.io/js/radar.js)
-
 A simple wrapper for objects that emits events *around* specified methods. It effectively
 sandwiches object methods between two event emitters.
+
+[![Build Status](https://travis-ci.org/rpnzl/radar.js.svg?branch=master)](https://travis-ci.org/rpnzl/radar.js)
+[![NPM version](https://badge.fury.io/js/radar.js.svg)](http://badge.fury.io/js/radar.js)
 
 
 ## Installation

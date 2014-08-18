@@ -1,10 +1,12 @@
-var Radar = require("./lib")
+var Radar = require("../lib")
   , radar = new Radar({ methods: ["leave"] });
 
 var bear = radar.wrap({
   name: "Bear",
-  leave: function () {
+  leave: function (done) {
     console.log(this.name + " is leaving...");
+    setTimeout(done, 3000);
+    // done("LEAVAMUNDO");
   },
   stay: function () {
     console.log(this.name + " is staying...");
@@ -15,20 +17,22 @@ var bear = radar.wrap({
 });
 
 radar.before("bear:leave", function () {
-  console.log(this.name + " is thinking about leaving...");
+  console.log("before:bear:leave listener called");
 });
 
 radar.after("bear:leave", function () {
-  console.log(this.name + " left.");
+  console.log("after:bear:leave listener called");
 });
-
-radar.before("bear:stay", function () {
-  console.log(this.name + " is thinking about staying...");
+//
+// radar.before("bear:stay", function () {
+//   console.log(this.name + " is thinking about staying...");
+// });
+//
+// radar.after("bear:stay", function () {
+//   console.log(this.name + " stayed.");
+// });
+//
+bear.leave(function () {
+  console.log("original async callback");
 });
-
-radar.after("bear:stay", function () {
-  console.log(this.name + " stayed.");
-});
-
-bear.leave();
-bear.stay();
+// bear.stay();

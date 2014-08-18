@@ -1,7 +1,7 @@
 {
   "name": "radar.js",
   "author": "Michael Giuliana <michael.giuliana@gmail.com>",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "keywords": [],
   "main": "./lib",
